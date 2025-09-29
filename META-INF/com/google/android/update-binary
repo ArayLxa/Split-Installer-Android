@@ -1,0 +1,30 @@
+#!/system/bin/sh
+
+# KernelSU/Magisk compatible update-binary script
+
+OUTFD=$2
+ZIPFILE=$3
+MODPATH=/data/adb/modules/split-installer
+
+ui_print() {
+  echo -e "ui_print $1\n ui_print" >> /proc/self/fd/$OUTFD
+}
+
+ui_print "\n[*] Installing split-installer module..."
+
+# Prepare module directory
+rm -rf $MODPATH
+mkdir -p $MODPATH
+
+# Extract module files
+unzip -o "$ZIPFILE" -d $MODPATH >/dev/null
+
+# Set correct permissions
+chmod -R 0755 $MODPATH/system/bin/aapt2 2>/dev/null
+chown 0:0 $MODPATH/system/bin/aapt2 2>/dev/null
+chmod -R 0755 $MODPATH/system/bin/split-installer 2>/dev/null
+chown 0:0 $MODPATH/system/bin/split-installer 2>/dev/null
+
+ui_print "[+] Installed to $MODPATH"
+ui_print "[+] Please reboot for changes to take effect"
+exit 0
