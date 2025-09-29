@@ -11,7 +11,7 @@ I created this project for myself since the split apk won't install normally wit
 - 📱 Install **split APKs** (multiple `.apk` files) in one session  
 - 🖥️ Simple **ncurses menu** for selecting optional splits  
 - 🔒 Works with **KernelSU** (root required)  
-- ⚡ No extra dependencies beyond `aapt2` and `cmd package`  
+- ⚡ No extra dependencies beyond `cmd package`  
 - 🧹 Automatic cleanup of temp files in `/data/local/tmp`  
 - 🛑 Session handling is safe (abandoned automatically on failure)
 
